@@ -1,0 +1,238 @@
+body {
+    display: flex;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+.titulo{
+    display: flex;
+    justify-content: center;
+    background-color: #2b302f;
+    color: #f0f8ff;
+    border-radius: 3px;
+}
+nav {
+    width: 250px;
+    background-color: #2b302f;
+    height: 100vh;
+    position: fixed;
+    padding-top: 20px;
+}
+
+nav a {
+    display: block;
+    color: white;
+    padding: 12px;
+    text-decoration: none;
+    position: relative;
+    font-weight: bold;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    left: 0;
+    bottom: 0;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+main {
+    margin-left: 250px;
+    padding: 20px;
+    width: 100%;
+}
+
+
+/* PARA COMPROBAR DIVS */
+div{
+    /* border: 1px solid black; */
+    padding: 1px;
+    /* margin: 1px; */
+}
+
+.cuerpo{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
+}
+/* INGRSAR DATOS */
+.ingresaDatos{
+    border: 1px solid #c1ceca;
+    padding: 0px;
+    margin: 0px;
+    width: 400px;
+    border-radius: 4px;
+}
+
+/* TITULO DE DATOS */
+.tituloDatos{
+  margin-bottom: 5px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #2b302f;
+  border-radius: 3px;
+}
+/*BOTONES DE RADIO MAX MIN */
+.maxmin{
+    display: flex;
+    justify-content:space-around ;
+}
+.objetivo{
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px;
+  margin: 1px;
+  border: 1px solid #2b302f;
+  border-radius: 5px;
+}
+.objetivo:hover {
+  background-color: #286090;
+  transition: 0.4s;
+}
+input[type="radio"] {
+  display: none;
+}
+
+/* BOTON DE INGRESAR DATOS */
+.contBoton{
+    display: flex;
+    justify-content: center;
+    
+}
+button {
+  padding: 10px 20px;
+  margin: 2px;
+  font-size: 16px;
+  background-color: #2b302f;
+  color: white;
+  border: 1px solid #2b302f;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #ffffff;
+  color: #2b302f;
+  transition: 0.4s;
+}
+
+/* INGRESO INPUTS NUMBER */
+input[type="number"], input[type="text"]{
+  width: 100px;
+  height: 20px; /* Altura más visible y cómoda */
+  padding: 5px 8px;
+  font-size: 14px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  color: #333;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Al enfocar */
+input[type="number"]:focus, input[type="text"]:focus {
+  border-color: #2b302f;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+/* TABLA DATOS INICIALES */
+.celdaInput{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.datosIniciales table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  color: #333;
+}
+
+.datosIniciales th, 
+.datosIniciales td {
+  /* border: 1px solid #ddd; */
+  text-align: left;
+}
+
+.datosIniciales th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.datosIniciales tr:nth-child(even) {
+  background-color: #fafafa; /* filas alternas para mayor claridad */
+}
+
+.datosIniciales tr:hover {
+  background-color: #f0f8ff; /* color al pasar el mouse */
+}
+
+/* TABLE GENERADA */
+.contenedorTabla{
+    /* border: 1px solid #333; */
+    padding: 0;
+    margin: 0;
+}
+/* SELECT */
+td select {
+    display: flex;
+    justify-content: center;
+
+    padding: 6px 10px;
+    font-size: 17px;
+    color: #333;
+    background-color: #fff;
+    border: 1.5px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+     background-repeat: no-repeat;
+    background-position: right 10px center;
+    /* background-size: 12px; */
+    cursor: pointer;
+}
+
+td select:focus {
+  border-color: #333;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+}
+.condiciones{
+    display: flex;
+    justify-content: right;
+}
+
+th{
+    background-color: #2b302f;
+    color: #fff;
+    padding: 7px;
+    border-radius: 3px;
+    margin: 0;
+    font-size: 14px;
+}
+table{
+    margin: 0;
+    padding: 0;
+}
+h3{
+  font-size: 20px;
+  margin: 15px;
+}
+
+.nombre{
+  color: #2b302f;
+  border-radius: 2px;
+  padding: 2px 12px;
+  margin: 1px;
+  font-size: 15px;
+}

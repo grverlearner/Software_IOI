@@ -1,0 +1,46 @@
+
+
+/* div{
+    border: 1px solid black;
+    padding: 1px;
+    margin: 1px;
+} */
+
+
+.cuerpoMetodo{
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+}
+.subtitulo{
+    display: flex;
+    justify-content: center;
+    background-color: #2b302f;
+    color: #fff;
+    /* padding: 10px 1px; */
+    border-radius: 3px;
+    margin: 5px;
+}
+p{
+    font-size: 15px;
+    margin: 8px;
+}
+td, th{
+    padding: 3px 17px;
+    font-size: 10px
+}
+.zeta{
+    background-color: #d6d5d5;
+}
+.sombreado{
+    background-color: rgb(152, 231, 231);
+}
+.sombreadoFull{
+    background-color: rgb(18, 222, 222);
+}
+.result{
+    background-color: rgb(233, 168, 190);
+}
+.resultZeta{
+    background-color: #e0cb56  ;
+}
