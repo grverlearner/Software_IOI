@@ -6,10 +6,6 @@
     margin: 1px;
 } */
 
-.cuerpoTransorte {
-    display: flex;
-    flex-direction: row;
-}
 .cuerpoMetodo{
     display: flex;
     justify-content: space-around;

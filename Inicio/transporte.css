@@ -1,0 +1,10 @@
+.cuerpoTransporte, .cuerpoTransporte div {
+    padding: 1px;
+    border: 1px solid black;
+}
+.cuerpoTransporte {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}

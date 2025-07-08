@@ -17,7 +17,7 @@ $objetivo = $_SESSION['objetivo'] ?? 'min';
     <h1>Modelo Transporte</h1>
 </div>
 
-<form method="post" action="resolucionGranM.php">
+<form method="post" action="#">
     <div class="cuerpoTransporte">
         <div class="ingresaDatos">
             <div class="tituloDatos">
