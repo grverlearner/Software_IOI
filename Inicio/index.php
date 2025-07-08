@@ -5,7 +5,7 @@ require_once '../inicio/sidebar.php';
 
 
 <div class="titulo">
-  <h1>Programación Lineal</h1>
+  <h1>Software Investigación Operativa I</h1>
 </div>
 <div class="cuerpo">
   <div class="ingresaDatos">
