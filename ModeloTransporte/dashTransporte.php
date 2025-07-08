@@ -16,7 +16,7 @@ $M = $_SESSION['M'] ?? 100;
 ?>
 
 <div class="titulo">
-    <h1>Método de la Gran M</h1>
+    <h1>Modelo Transporte</h1>
 </div>
 
 <form method="post" action="resolucionGranM.php">
@@ -37,7 +37,7 @@ $M = $_SESSION['M'] ?? 100;
             <div class="datosIniciales">
                 <table>
                     <tr>
-                        <td><label for="M"><p>Valor de M: </p></label></td>
+                        <td><label for="M"><p>Valor de M:</p> </label></td>
                         <td class="celdaInput"><input type="number" id="M" name="M" value="<?= $M ?>" required /></td>
                     </tr>
                     <tr>
@@ -45,7 +45,7 @@ $M = $_SESSION['M'] ?? 100;
                         <td class="celdaInput"><input type="number" id="cantVar" name="cantVar" value="<?= $cantVar ?>" min="2" required /></td>
                     </tr>
                     <tr>
-                        <td><label for="cantRest"><p>Cantidad de restricciones: </p></label></td>
+                        <td><label for="cantRest"><p>Cantidad de restricciones: </p> </label></td>
                         <td class="celdaInput"><input type="number" id="cantRest" name="cantRest" value="<?= $cantRest ?>" min="2" required /></td>
                     </tr>
                 </table>
@@ -91,7 +91,7 @@ $M = $_SESSION['M'] ?? 100;
 
     };
 </script>
-<script src="../Inicio/metodGranM.js"></script>
+<script src="../inicio/metodGranM.js"></script>
 
 <?php
 require_once '../Inicio/footer.php';

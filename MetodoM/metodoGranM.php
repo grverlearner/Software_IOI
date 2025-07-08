@@ -1,4 +1,5 @@
 <?php
+/*
 session_start();
 
 $variZeta = $_SESSION['variZeta'] ?? [];
@@ -87,4 +88,4 @@ $M = $_SESSION['M'] ?? 100;
 
   };
 </script>
-<script src="metodGranM.js"></script>
+<script src="../Inicio/metodGranM.js"></script>

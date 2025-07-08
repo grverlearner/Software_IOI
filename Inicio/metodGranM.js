@@ -15,12 +15,12 @@ function generarTabla(datos = null) {
     let tabla = '<table><tr><th> </th>';
 
     for (let i = 0; i < cantVar; i++) {
-        tabla += `<th>X${i + 1}</th>`;
+        tabla += `<th><p>X${i + 1}</p></th>`;
     }
-    tabla += `<th></th><th>Resultado</th></tr>`;
+    tabla += `<th></th><th><p>Resultado</p></th></tr>`;
 
     // Fila Z
-    tabla += `<tr><th> Z </th>`;
+    tabla += `<tr><th><p> Z </p> </th>`;
     for (let i = 0; i < cantVar; i++) {
         const valor = datos?.variZeta?.[i] ?? '';
         tabla += `
@@ -32,7 +32,7 @@ function generarTabla(datos = null) {
 
     // Restricciones
     for (let i = 0; i < cantRest; i++) {
-        tabla += `<tr> <th> Restricción ${i+1}</th>`;
+        tabla += `<tr> <th><p> Restricción ${i+1}<p> </th>`;
         for (let c = 0; c < cantVar; c++) {
             const valor = datos?.vari?.[i]?.[c] ?? '';
             tabla += `
