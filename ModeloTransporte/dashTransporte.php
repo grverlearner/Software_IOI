@@ -5,14 +5,12 @@ require_once '../Inicio/sidebar.php';
 <?php
 session_start();
 
-$variZeta = $_SESSION['variZeta'] ?? [];
-$vari = $_SESSION['vari'] ?? [];
-$condicion = $_SESSION['condicion'] ?? [];
-$resul = $_SESSION['resul'] ?? [];
-$cantVar = $_SESSION['cantVar'] ?? 2;
-$cantRest = $_SESSION['cantRest'] ?? 2;
+$costo = $_SESSION['costo'] ?? [];
+$demanda = $_SESSION['demanda'] ?? [];
+$oferta = $_SESSION['oferta'] ?? [];
+$numDestinos = $_SESSION['numDestinos'] ?? 2;
+$numFuentes = $_SESSION['numFuentes'] ?? 2;
 $objetivo = $_SESSION['objetivo'] ?? 'min';
-$M = $_SESSION['M'] ?? 100;
 ?>
 
 <div class="titulo">
@@ -20,7 +18,7 @@ $M = $_SESSION['M'] ?? 100;
 </div>
 
 <form method="post" action="resolucionGranM.php">
-    <div class="cuerpo">
+    <div class="cuerpoTransporte">
         <div class="ingresaDatos">
             <div class="tituloDatos">
                 <h3>Ingresa datos iniciales:</h3>
@@ -37,22 +35,22 @@ $M = $_SESSION['M'] ?? 100;
             <div class="datosIniciales">
                 <table>
                     <tr>
-                        <td><label for="M"><p>Valor de M:</p> </label></td>
-                        <td class="celdaInput"><input type="number" id="M" name="M" value="<?= $M ?>" required /></td>
+                        <td><label for="numDestinos">
+                                <p>Cantidad de Destinos: </p>
+                            </label></td>
+                        <td class="celdaInput"><input type="number" id="numDestinos" name="numDestinos" value="<?= $numDestinos ?>" min="2" required /></td>
                     </tr>
                     <tr>
-                        <td><label for="cantVar"><p>Cantidad de variables: </p></label></td>
-                        <td class="celdaInput"><input type="number" id="cantVar" name="cantVar" value="<?= $cantVar ?>" min="2" required /></td>
-                    </tr>
-                    <tr>
-                        <td><label for="cantRest"><p>Cantidad de restricciones: </p> </label></td>
-                        <td class="celdaInput"><input type="number" id="cantRest" name="cantRest" value="<?= $cantRest ?>" min="2" required /></td>
+                        <td><label for="numFuentes">
+                                <p>Cantidad de Fuentes: </p>
+                            </label></td>
+                        <td class="celdaInput"><input type="number" id="numFuentes" name="numFuentes" value="<?= $numFuentes ?>" min="2" required /></td>
                     </tr>
                 </table>
             </div>
 
             <div class="contBoton">
-                <button class="botonIngresar" onclick="generarTabla()">Ingresar datos</button>
+                <button type="button" class="botonIngresar" onclick="tablaTransporte()">Ingresar datos</button>
             </div>
         </div>
         <div class="contenedorTabla">
@@ -66,17 +64,16 @@ $M = $_SESSION['M'] ?? 100;
 <!-- Pasamos los datos PHP a JavaScript -->
 <script>
     const datosGuardados = {
-        cantVar: <?= $cantVar ?>,
-        cantRest: <?= $cantRest ?>,
-        variZeta: <?= json_encode($variZeta) ?>,
-        vari: <?= json_encode($vari) ?>,
-        condicion: <?= json_encode($condicion) ?>,
-        resul: <?= json_encode($resul) ?>
+        numDestinos: <?= $numDestinos ?>,
+        numFuentes: <?= $numFuentes ?>,
+        costo: <?= json_encode($costo) ?>,
+        demanda: <?= json_encode($demanda) ?>,
+        oferta: <?= json_encode($oferta) ?>
     };
 
     window.onload = function() {
-        if (datosGuardados.vari && datosGuardados.vari.length > 0) {
-            generarTabla(datosGuardados);
+        if (datosGuardados.costo && datosGuardados.costo.length > 0) {
+            tablaTransporte(datosGuardados);
         }
         <?php
         if ($objetivo == 'min') {
