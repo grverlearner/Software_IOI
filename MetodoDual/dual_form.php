@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
+
     <meta charset="UTF-8">
     <title>Dual Simplex Solver</title>
     <style>
@@ -64,8 +62,10 @@
             background-color: #1a1d20;
         }
     </style>
-</head>
-<body>
+<?php
+require_once '../inicio/header.php';
+require_once '../Inicio/sidebar.php';
+?>
 
 <header>
     Método Simplex Dual
@@ -96,7 +96,7 @@ $rhs = $_POST['rhs'] ?? '';
 
             <label>Cantidad de variables:</label>
             <input type="number" name="n_vars" value="<?= htmlspecialchars($n_vars) ?>" required>
-
+            <br>
             <label>Cantidad de restricciones:</label>
             <input type="number" name="n_cons" value="<?= htmlspecialchars($n_cons) ?>" required>
         </div>
@@ -122,5 +122,6 @@ $rhs = $_POST['rhs'] ?? '';
     </div>
 </form>
 
-</body>
-</html>
+<?php
+require_once '../Inicio/footer.php';
+?>
