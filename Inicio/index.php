@@ -21,7 +21,7 @@ require_once '../inicio/sidebar.php';
         </td>
       </tr>
       <tr>
-        <td class="nombre">Noemí Esther Chura Mamani</td>
+        <td class="nombre">Noemi Esther Chura Mamani</td>
         <td class="nombre">
           <input type="text" value="2023-119011" readonly />
         </td>
