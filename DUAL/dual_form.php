@@ -1,105 +1,12 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Método Simplex Dual</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+<?php
+require_once '../inicio/header.php';
+require_once '../Inicio/sidebar.php';
+?>
 
-        header {
-            background-color: #2c2f33;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 24px;
-        }
+<div class="titulo">
+    <h1>Método Simplex Dual</h1>
 
-        .container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 30px auto;
-            max-width: 1200px;
-            flex-wrap: wrap;
-        }
-
-        .panel {
-            background-color: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.15);
-            flex: 1;
-            min-width: 300px;
-        }
-
-        h3 {
-            margin-top: 0;
-            background: #2c2f33;
-            color: white;
-            padding: 10px;
-            border-radius: 8px 8px 0 0;
-            text-align: center;
-        }
-
-        input[type="number"], select {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
-        }
-
-        button, input[type="submit"] {
-            background-color: #2c2f33;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-        }
-
-        td, th {
-            padding: 8px;
-            text-align: center;
-        }
-
-        .matrix-container {
-            overflow-x: auto;
-        }
-
-        .restriccion-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)) 100px 100px;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
-        .restriccion-grid input, .restriccion-grid select {
-            width: 100%;
-        }
-
-        .restriccion-label {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    Método Simplex Dual
-</header>
+</div>
 
 <div class="container">
     <div class="panel">
@@ -182,5 +89,6 @@ function generarTabla() {
 }
 </script>
 
-</body>
-</html>
+<?php
+require_once '../Inicio/footer.php';
+?>
