@@ -85,7 +85,7 @@ require_once '../Inicio/sidebar.php';
 
 <?php
 function parse_input($str) {
-    return array_map('floatval', explode(',', trim($str)));
+    return array_map('floatval', explode(',', trim((string)$str)));
 }
 function parse_lines($str) {
     return array_map('trim', explode("\n", trim($str)));
@@ -119,8 +119,7 @@ function generarDual($tipo, $nVars, $nRestricciones, $obj, $restricciones, $sign
         for ($i = 0; $i < $nVars; $i++) {
             $fila = [];
             for ($j = 0; $j < $nRestricciones; $j++) {
-                $coef = parse_input($restricciones[$j]);
-                $fila[] = -$coef[$i];
+                $fila[] = -floatval($restricciones[$j][$i]);
             }
             $aDual[] = $fila;
         }
@@ -129,8 +128,7 @@ function generarDual($tipo, $nVars, $nRestricciones, $obj, $restricciones, $sign
         for ($i = 0; $i < $nVars; $i++) {
             $fila = [];
             for ($j = 0; $j < $nRestricciones; $j++) {
-                $coef = parse_input($restricciones[$j]);
-                $fila[] = $coef[$i];
+                $fila[] = floatval($restricciones[$j][$i]);
             }
             $aDual[] = $fila;
         }
@@ -144,15 +142,14 @@ $tipo = $_POST['tipo'];
 $nVars = intval($_POST['n_vars']);
 $nRestricciones = intval($_POST['n_cons']);
 
-$obj = parse_input($_POST['objetivo']);
-$restricciones = parse_lines($_POST['restricciones']);
-$signos = parse_lines($_POST['signos']);
-$rhs = parse_input($_POST['rhs']);
+$obj = array_map('floatval', $_POST['objetivo']);
+$restricciones = $_POST['restricciones'];
+$signos = $_POST['signos'];
+$rhs = array_map('floatval', $_POST['rhs']);
 
-// Construcción dual
+
 list($aDual, $zDual, $rhsDual) = generarDual($tipo, $nVars, $nRestricciones, $obj, $restricciones, $signos, $rhs);
 
-// Tabla inicial
 $tabla = [];
 $base = [];
 for ($i = 0; $i < count($aDual); $i++) {
@@ -222,7 +219,67 @@ while (true) {
     mostrarTabla($tabla, $base, $nVars, count($aDual), 2);
 }
 
-// RESULTADO FINAL
+$hayNegativosEnZ = false;
+for ($j = 0; $j < $columnas - 1; $j++) {
+    if ($tabla[$filas - 1][$j] < 0) {
+        $hayNegativosEnZ = true;
+        break;
+    }
+}
+
+if ($hayNegativosEnZ) {
+    echo "<div class='resultado'>Se aplica método primal (simplex estándar) al finalizar el dual</div>";
+    
+    while (true) {
+        $colPivote = -1;
+        $minVal = 0;
+        for ($j = 0; $j < $columnas - 1; $j++) {
+            if ($tabla[$filas - 1][$j] < $minVal) {
+                $minVal = $tabla[$filas - 1][$j];
+                $colPivote = $j;
+            }
+        }
+
+        if ($colPivote == -1) break;
+
+        $filaPivote = -1;
+        $minRatio = PHP_FLOAT_MAX;
+        for ($i = 0; $i < $filas - 1; $i++) {
+            $val = $tabla[$i][$colPivote];
+            if ($val > 0) {
+                $ratio = $tabla[$i][$columnas - 1] / $val;
+                if ($ratio < $minRatio) {
+                    $minRatio = $ratio;
+                    $filaPivote = $i;
+                }
+            }
+        }
+
+        if ($filaPivote == -1) {
+            echo "<p><strong>Solución no acotada.</strong></p>";
+            exit;
+        }
+
+        $pivote = $tabla[$filaPivote][$colPivote];
+        for ($j = 0; $j < $columnas; $j++) {
+            $tabla[$filaPivote][$j] /= $pivote;
+        }
+
+        for ($i = 0; $i < $filas; $i++) {
+            if ($i != $filaPivote) {
+                $factor = $tabla[$i][$colPivote];
+                for ($j = 0; $j < $columnas; $j++) {
+                    $tabla[$i][$j] -= $factor * $tabla[$filaPivote][$j];
+                }
+            }
+        }
+
+        $base[$filaPivote] = "X" . ($colPivote + 1);
+        mostrarTabla($tabla, $base, $nVars, count($aDual), 3);
+    }
+}
+
+
 echo "<div class='resultado'><< RESULTADO >></div>";
 echo "<div class='bloque clearfix'>";
 echo "<div class='titulo'>ITERACION FINAL</div>";
@@ -240,21 +297,46 @@ echo "</table>";
 
 echo "<div class='solucion-box'>";
 echo "<div class='titulo'>SOLUCIÓN</div>";
-for ($j = 0; $j < $nVars; $j++) {
-    $valor = 0;
-    for ($i = 0; $i < count($aDual); $i++) {
-        if ($base[$i] == "X" . ($j + 1)) {
-            $valor = $tabla[$i][$columnas - 1];
-            break;
+// <<<<<<<< HEAD:MetodoDual/dual_solver.php
+// for ($j = 0; $j < $nVars; $j++) {
+//     $valor = 0;
+//     for ($i = 0; $i < count($aDual); $i++) {
+//         if ($base[$i] == "X" . ($j + 1)) {
+//             $valor = $tabla[$i][$columnas - 1];
+//             break;
+// ========
+
+if ($tipo === 'min') {
+    for ($j = 0; $j < $nRestricciones; $j++) {
+        $valor = 0;
+        for ($i = 0; $i < count($aDual); $i++) {
+            if ($base[$i] == "X" . ($j + 1)) {
+                $valor = $tabla[$i][$columnas - 1];
+                break;
+            }
+// >>>>>>>> origin/main:DUAL/dual_solver.php
         }
+        echo "<div><span>X" . ($j + 1) . "</span><span>" . round($valor, 2) . "</span></div>";
     }
-    echo "<div><span>X" . ($j + 1) . "</span><span>" . round($valor, 2) . "</span></div>";
+} else {
+    for ($j = 0; $j < $nVars-1; $j++) {
+        $valor = 0;
+        for ($i = 0; $i < count($aDual); $i++) {
+            if ($base[$i] == "X" . ($j + 1)) {
+                $valor = $tabla[$i][$columnas - 1];
+                break;
+            }
+        }
+        echo "<div><span>X" . ($j + 1) . "</span><span>" . round($valor, 2) . "</span></div>";
+    }
 }
+
 $z = $tabla[$filas - 1][$columnas - 1];
 echo "<div><span>Z</span><span>" . round(abs($z), 2) . "</span></div>";
 echo "</div>";
-echo "</div>";
+
 ?>
+
 <?php
 require_once '../Inicio/footer.php';
 ?>
