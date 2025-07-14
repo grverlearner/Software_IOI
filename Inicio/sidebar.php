@@ -6,7 +6,7 @@
     <a href="../DUAL/dual_form.php">Método Dual</a>
     <p>Unidad II</p>
     <a href="../ModeloTransporte/dashTransporte.php">Modelo de Transporte</a>
-    <a href="#">Ramificación y acotamiento</a>
+    <a href="../RAMIFICACION/index.php">Ramificación y acotamiento</a>
     <a href="#">Binario</a>
     <a href="#">Asignación</a>
 </nav>

@@ -126,100 +126,100 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $resultado .= "</tr>";
     }
     $resultado .= "</table>";
-    $resultado .= '<br><a href="index.html">Volver</a>';
+    $resultado .= '<br><a href="index.php">Volver</a>';
     $resultado .= "</div>";
 
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Ramificación y Acotación</title>
-    <style>
-        body {
-            font-family: Arial;
-            background: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #2c2f33;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 24px;
-        }
-        .container {
-            max-width: 900px;
-            margin: 30px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h2 {
-            text-align: center;
-            color: #2c2f33;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid #aaa;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #2c2f33;
-            color: white;
-        }
-        .node-optimal {
-            background-color: lightgreen;
-        }
-        .node-pruned {
-            background-color: lightcoral;
-        }
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            text-decoration: none;
-            color: #2c2f33;
-            background-color: #ddd;
-            border-radius: 8px;
-            font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: background-color 0.3s ease;
-        }
+<?php
+require_once '../inicio/header.php';
+require_once '../Inicio/sidebar.php';
+?>
+<style>
+    body {
+        font-family: Arial;
+        background: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #2c2f33;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 24px;
+    }
+    .container {
+        max-width: 900px;
+        margin: 30px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+        text-align: center;
+        color: #2c2f33;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    th, td {
+        border: 1px solid #aaa;
+        padding: 8px;
+        text-align: center;
+    }
+    th {
+        background-color: #2c2f33;
+        color: white;
+    }
+    .node-optimal {
+        background-color: lightgreen;
+    }
+    .node-pruned {
+        background-color: lightcoral;
+    }
+    a {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: #2c2f33;
+        /* background-color: #ddd; */
+        border-radius: 8px;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        transition: background-color 0.3s ease;
+    }
 
-        a:hover {
-            background-color: #ccc;
-        }
+    a:hover {
+        background-color: #25272aff;
+    }
 
-        header {
-            background-color: #ddd;
-            color: #2c2f33;
-            padding: 20px;
-            text-align: center;
-            font-size: 24px;
-            border-radius: 12px;
-            margin: 20px auto;
-            width: 90%;
-            max-width: 900px;
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-        }
+    header {
+        background-color: #ddd;
+        color: #2c2f33;
+        padding: 20px;
+        text-align: center;
+        font-size: 24px;
+        border-radius: 12px;
+        margin: 20px auto;
+        width: 90%;
+        max-width: 900px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
 
-    </style>
-</head>
-<body>
+</style>
 
-<header>Ramificación y Acotación - Programación Entera</header>
+<div class="titulo">
+    <h1>Ramificación y Acotación - Programación Entera</h1>
+</div>
 
 <?= $resultado ?>
 
-</body>
-</html>
+<?php
+require_once '../Inicio/footer.php';
+?>

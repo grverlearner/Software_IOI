@@ -127,8 +127,8 @@ button:hover {
 
 /* INGRESO INPUTS NUMBER */
 input[type="number"], input[type="text"]{
-  width: 100px;
-  height: 20px; /* Altura más visible y cómoda */
+  width: 100px; 
+  /*height: 20px; /* Altura más visible y cómoda */
   padding: 5px 8px;
   font-size: 14px;
   border: 2px solid #ccc;
