@@ -1,105 +1,117 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Método Simplex Dual</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
 
-        header {
-            background-color: #2c2f33;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 24px;
-        }
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
 
-        .container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 30px auto;
-            max-width: 1200px;
-            flex-wrap: wrap;
-        }
+    header {
+        background-color: #2c2f33;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 24px;
+    }
 
-        .panel {
-            background-color: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.15);
-            flex: 1;
-            min-width: 300px;
-        }
+    .container {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin: 30px auto;
+        max-width: 1200px;
+        flex-wrap: wrap;
+    }
 
-        h3 {
-            margin-top: 0;
-            background: #2c2f33;
-            color: white;
-            padding: 10px;
-            border-radius: 8px 8px 0 0;
-            text-align: center;
-        }
+    .panel {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.15);
+        flex: 1;
+        min-width: 300px;
+    }
 
-        input[type="number"], select {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
-        }
+    h3 {
+        margin-top: 0;
+        background: #2c2f33;
+        color: white;
+        padding: 10px;
+        border-radius: 8px 8px 0 0;
+        text-align: center;
+    }
 
-        button, input[type="submit"] {
-            background-color: #2c2f33;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-        }
+    .restriccion-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 10px;
+        margin-bottom: 10px;
+    }
 
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-        }
+    .restriccion-label {
+        font-weight: bold;
+        margin-top: 15px;
+    }
 
-        td, th {
-            padding: 8px;
-            text-align: center;
-        }
+    input[type="number"], select, textarea {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        width: 100%;
+        box-sizing: border-box;
+    }
 
-        .matrix-container {
-            overflow-x: auto;
-        }
+    button, input[type="submit"] {
+        background-color: #2c2f33;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: 20px;
+    }
 
-        .restriccion-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)) 100px 100px;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 25px;
+    }
 
-        .restriccion-grid input, .restriccion-grid select {
-            width: 100%;
-        }
+    th, td {
+        border: 1px solid #aaa;
+        padding: 8px;
+        text-align: center;
+    }
 
-        .restriccion-label {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-    </style>
-</head>
-<body>
+    th {
+        background-color: #2c2f33;
+        color: white;
+    }
 
-<header>
-    Método Simplex Dual
-</header>
+    .node-optimal {
+        background-color: lightgreen;
+    }
+
+    .node-pruned {
+        background-color: lightcoral;
+    }
+</style>
+
+<?php
+require_once '../inicio/header.php';
+require_once '../Inicio/sidebar.php';
+?>
+
+
+<div class="titulo">
+    <h1>Ramificación y Acotación - Programación Entera</h1>
+</div>
+
 
 <div class="container">
     <div class="panel">
@@ -108,8 +120,8 @@
         <div>
             <label>Tipo de problema:</label>
             <select id="tipoProblema">
-                <option value="min">Minimizar</option>
                 <option value="max">Maximizar</option>
+                <option value="min">Minimizar</option>
             </select>
         </div>
 
@@ -120,7 +132,7 @@
 
         <div>
             <label>Cantidad de restricciones:</label>
-            <input type="number" id="numRestricciones" value="3">
+            <input type="number" id="numRestricciones" value="2">
         </div>
 
         <div>
@@ -130,8 +142,9 @@
 
 
     <div class="panel matrix-container">
-        <form action="dual_solver.php" method="post" id="formulario">
+        <form action="ramificacion.php" method="post" id="formulario">
             <div id="tablaGenerada"></div>
+            
         </form>
     </div>
 </div>
@@ -166,6 +179,7 @@ function generarTabla() {
             <input type="number" name="rhs[]" step="any" placeholder="RHS" required>
         `;
         html += `</div>`;
+        
     }
     html += `<input type="submit" value="Aplicar">`;
 
@@ -182,5 +196,6 @@ function generarTabla() {
 }
 </script>
 
-</body>
-</html>
+<?php
+require_once '../Inicio/footer.php';
+?>

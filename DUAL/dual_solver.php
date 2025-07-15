@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Resultado - Método Simplex Dual</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -82,8 +78,10 @@
             display: table;
         }
     </style>
-</head>
-<body>
+<?php
+require_once '../inicio/header.php';
+require_once '../Inicio/sidebar.php';
+?>
 
 <?php
 function parse_input($str) {
@@ -299,6 +297,14 @@ echo "</table>";
 
 echo "<div class='solucion-box'>";
 echo "<div class='titulo'>SOLUCIÓN</div>";
+// <<<<<<<< HEAD:MetodoDual/dual_solver.php
+// for ($j = 0; $j < $nVars; $j++) {
+//     $valor = 0;
+//     for ($i = 0; $i < count($aDual); $i++) {
+//         if ($base[$i] == "X" . ($j + 1)) {
+//             $valor = $tabla[$i][$columnas - 1];
+//             break;
+// ========
 
 if ($tipo === 'min') {
     for ($j = 0; $j < $nRestricciones; $j++) {
@@ -308,6 +314,7 @@ if ($tipo === 'min') {
                 $valor = $tabla[$i][$columnas - 1];
                 break;
             }
+// >>>>>>>> origin/main:DUAL/dual_solver.php
         }
         echo "<div><span>X" . ($j + 1) . "</span><span>" . round($valor, 2) . "</span></div>";
     }
@@ -329,5 +336,7 @@ echo "<div><span>Z</span><span>" . round(abs($z), 2) . "</span></div>";
 echo "</div>";
 
 ?>
-</body>
-</html>
+
+<?php
+require_once '../Inicio/footer.php';
+?>
