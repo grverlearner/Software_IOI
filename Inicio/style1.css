@@ -238,3 +238,15 @@ h3{
   margin: 1px;
   font-size: 15px;
 }
+
+.fila-z {
+    background-color: #f0f0f0; /* Gris claro */
+    font-weight: bold;
+}
+
+.mejor-solucion {
+    background-color: #fff59d;
+}
+.factible {
+    background-color: #bbdefb;
+}
