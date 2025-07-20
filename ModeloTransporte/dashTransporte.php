@@ -12,12 +12,12 @@ $numDestinos = $_SESSION['numDestinos'] ?? 2;
 $numFuentes = $_SESSION['numFuentes'] ?? 2;
 $objetivo = $_SESSION['objetivo'] ?? 'min';
 ?>
-
-<div class="titulo">
+<div class="cont-all">
+    <div class="titulo">
     <h1>Modelo Transporte</h1>
 </div>
 
-<form method="post" action="#">
+<form method="POST" action="resTransEN.php">
     <div class="cuerpoTransporte">
         <div class="ingresaDatos">
             <div class="tituloDatos">
@@ -59,6 +59,9 @@ $objetivo = $_SESSION['objetivo'] ?? 'min';
         </div>
     </div>
 </form>
+</div>
+
+
 
 
 <!-- Pasamos los datos PHP a JavaScript -->
@@ -88,7 +91,7 @@ $objetivo = $_SESSION['objetivo'] ?? 'min';
 
     };
 </script>
-<script src="../inicio/metodGranM.js"></script>
+<script src="functionTrans.js"></script>
 
 <?php
 require_once '../Inicio/footer.php';

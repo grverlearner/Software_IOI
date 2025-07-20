@@ -1,10 +1,28 @@
 .cuerpoTransporte, .cuerpoTransporte div {
     padding: 1px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 .cuerpoTransporte {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 25px;
     
+}
+.cont-all {
+    display: flex;
+    flex-direction: column;
+}
+
+.cont-table th {
+    padding: 5px 13px;
+}
+
+.td-cost {
+    font-size: 12px;
+}
+.td-asig {
+    font-size: 16px;
+    display: flex;
+    flex-direction: row-reverse;
 }
