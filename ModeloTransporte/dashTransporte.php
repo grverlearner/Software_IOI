@@ -53,7 +53,7 @@ $objetivo = $_SESSION['objetivo'] ?? 'min';
                 <button type="button" class="botonIngresar" onclick="tablaTransporte()">Ingresar datos</button>
             </div>
         </div>
-        <div class="contenedorTabla">
+        <div class="cont-table">
             <div class="tablaVariables" id="tablaContainer"></div>
             <div class="contBoton" id="submitBtn" style="margin-top: 10px;"></div>
         </div>

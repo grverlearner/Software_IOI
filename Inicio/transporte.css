@@ -14,8 +14,22 @@
     flex-direction: column;
 }
 
+.cont-trans-all {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.cont-res-en {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-around;
+}
 .cont-table th {
     padding: 5px 13px;
+}
+.cont-table th p {
+    margin: 0;
 }
 
 .td-cost {
@@ -26,3 +40,4 @@
     display: flex;
     flex-direction: row-reverse;
 }
+

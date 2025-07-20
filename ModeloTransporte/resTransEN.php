@@ -20,8 +20,8 @@ $cost = $costo;
 $deman = $demanda;
 $ofer = $oferta;
 $asig = [];
-for($i = 0; $i < count($deman); $i++){
-    for($j = 0; $j < count($cost); $j++){
+for ($i = 0; $i < count($ofer); $i++) {
+    for ($j = 0; $j < count($deman); $j++) {
         $asig[$i][$j] = 0;
     }
 }
@@ -35,15 +35,42 @@ require_once '../inicio/header.php';
 require_once '../Inicio/sidebar.php';
 ?>
 
-<div class="Cont-reso">
+<div class="cont-trans-all">
+    <div class="titulo">
+        <h1>Moleo de transporte - Esquina Noroeste</h1>
+    </div>
 
-<?php
-viewTable($deman,$ofer,$cost,$asig);
-?>
-    <div>
+    <div class="cont-res-en">
 
+        <?php
+        viewTable($deman, $ofer, $cost, $asig);
+        $cen = 0;
+        while (($ideman < count($deman) && $iofer < count($ofer)) && $cen < 20) {
+            if ($deman[$ideman] > $ofer[$iofer]) {
+                $asig[$iofer][$ideman] = $ofer[$iofer];
+                $deman[$ideman] -=  $asig[$iofer][$ideman];
+                $ofer[$iofer] -=  $asig[$iofer][$ideman];
+                $iofer++;
+            } else {
+                $asig[$iofer][$ideman] = $deman[$ideman];
+                $deman[$ideman] -=  $asig[$iofer][$ideman];
+                $ofer[$iofer] -=  $asig[$iofer][$ideman];
+                $ideman++;
+            }
+            viewTable($deman, $ofer, $cost, $asig);
+            $cen++;
+            // echo $ideman . " ... " . $iofer . "<br>";
+            // echo count($deman) . "---" . count($ofer);
+
+        }
+        ?>
     </div>
 </div>
+
+<div class="res-trans">
+    
+</div>
+
 
 
 <?php
