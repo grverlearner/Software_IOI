@@ -152,4 +152,23 @@ function conteoAsignacion ($asig){
   return $conteo;
 }
 
+function dosMinimosFila($fila) {
+  sort($fila); // Ordena la fila
+  return [$fila[0], $fila[1]]; // Devuelve los dos menores
+}
+
+function dosMinimosColumna($matriz, $indiceColumna) {
+    $columna = [];
+
+    // Extraer la columna
+    foreach ($matriz as $fila) {
+        if (isset($fila[$indiceColumna])) {
+            $columna[] = $fila[$indiceColumna];
+        }
+    }
+
+    sort($columna); // Ordenar de menor a mayor
+
+    return [$columna[0], $columna[1]]; // Devolver los 2 mínimos
+}
 ?>

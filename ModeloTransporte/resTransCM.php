@@ -36,7 +36,7 @@ require_once '../Inicio/sidebar.php';
 
 <div class="cont-trans-all">
   <div class="titulo">
-    <h1>Modelo de transporte - Esquina Noroeste</h1>
+    <h1>Modelo de transporte - Costos Mínimos</h1>
   </div>
 
   <div class="cont-res-en">
