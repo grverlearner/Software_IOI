@@ -9,6 +9,6 @@
     <a href="../ModeloTransporte/dashCostoMin.php">Transporte Costos Mínimos</a>
     <a href="../RAMIFICACION/index.php">Ramificación y acotamiento</a>
     <a href="../ModeloBinario/modeloBinario.php">Binario</a>
-    <a href="#">Asignación</a>
+    <a href="../Hungaro-Asignacion/index.php">Asignación</a>
 </nav>
 <main>
