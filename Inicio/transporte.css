@@ -29,7 +29,7 @@
     padding: 5px 13px;
 }
 .cont-table th p {
-    margin: 0;
+    margin: 0;  
 }
 
 .td-cost {
@@ -41,3 +41,16 @@
     flex-direction: row-reverse;
 }
 
+.td-ofer {
+    background-color: rgba(229, 92, 18, 0.46);
+}
+.td-deman {
+    background-color: rgba(223, 217, 52, 0.727);
+}
+.td-somb {
+    background-color: rgba(133, 228, 227, 0.727);
+}
+.td-res {
+    background-color: rgba(142, 170, 241, 0.866);
+    font-weight: bold;
+}

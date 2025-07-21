@@ -57,7 +57,7 @@ require_once '../Inicio/sidebar.php';
                 $ofer[$iofer] -=  $asig[$iofer][$ideman];
                 $ideman++;
             }
-            viewTable($deman, $ofer, $cost, $asig);
+            tableEsquinaNoroeste($deman, $ofer, $cost, $asig, $ideman, $iofer);
             $cen++;
             // echo $ideman . " ... " . $iofer . "<br>";
             // echo count($deman) . "---" . count($ofer);

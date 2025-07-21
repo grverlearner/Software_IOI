@@ -1,41 +1,97 @@
 <?php
 
-function viewTable($demanda,$oferta,$costo,$asig) {
-    ?>
-    <div class="cont-table">
-        <table class="r-table">
-            <tr>
-                <th></th>
-                <?php for($i = 0; $i < count($demanda); $i++){ ?>
-                    <th> Destino <?=$i+1?></th>   
-                <?php } ?>
-                <th>Oferta</th>
-            </tr>
-            <?php for($i = 0; $i < count($oferta); $i++){ ?>
-                <tr>
-                    <th>Fuente <?=$i+1?> </th>
-                    <?php for($j = 0; $j < count($demanda); $j++){ ?>
-                        <td class="celda-cost">
-                            <div class="td-cost"><?=$costo[$i][$j]?></div>
-                            
-                            <div class="td-asig"><?=$asig[$i][$j]?></div>
-                        </td>
-                    <?php } ?>
-                    <td><?=$oferta[$i]?></td>
-                </tr>
-            <?php } ?>
-            <tr>
-                <th>Demanda</th>
-                <?php for($i = 0; $i < count($demanda); $i++){ ?>
-                    <td><?=$demanda[$i]?></td>   
-                <?php } ?>
-                <td></td>
-            </tr>
+function viewTable($demanda, $oferta, $costo, $asig) {
+?>
+  <div class="cont-table">
+    <table class="r-table">
+      <tr>
+        <th></th>
+        <?php for ($i = 0; $i < count($demanda); $i++) { ?>
+          <th> Destino <?= $i + 1 ?></th>
+        <?php } ?>
+        <th>Oferta</th>
+      </tr>
+      <?php for ($i = 0; $i < count($oferta); $i++) { ?>
+        <tr>
+          <th>Fuente <?= $i + 1 ?> </th>
+          <?php for ($j = 0; $j < count($demanda); $j++) { ?>
+            <td class="celda-cost">
+              <div class="td-cost"><?= $costo[$i][$j] ?></div>
 
-        </table>
-    </div>
-    <?php
+              <div class="td-asig"><?= $asig[$i][$j] ?></div>
+            </td>
+          <?php } ?>
+          <td class="td-ofer"><?= $oferta[$i] ?></td>
+        </tr>
+      <?php } ?>
+      <tr>
+        <th>Demanda</th>
+        <?php for ($i = 0; $i < count($demanda); $i++) { ?>
+          <td class="td-deman"><?= $demanda[$i] ?></td>
+        <?php } ?>
+        <td></td>
+      </tr>
+
+    </table>
+  </div>
+<?php
 }
 
+function tableEsquinaNoroeste($demanda, $oferta, $costo, $asig, $ideman, $iofer) {
+?>
+  <div class="cont-table">
+    <table class="r-table">
+      <tr>
+        <th></th>
+        <?php for ($i = 0; $i < count($demanda); $i++) { ?>
+          <th> Destino <?= $i + 1 ?></th>
+        <?php } ?>
+        <th>Oferta</th>
+      </tr>
+      <?php for ($i = 0; $i < count($oferta); $i++) { ?>
+        <tr>
+          <th>Fuente <?= $i + 1 ?> </th>
+          <?php for ($j = 0; $j < count($demanda); $j++) {
+            if ($asig[$i][$j] > 0) {
+              ?>
+                <td class="celda-cost td-res">
+                  <div class="td-cost"><?= $costo[$i][$j] ?></div>
+
+                  <div class="td-asig"><?= $asig[$i][$j] ?></div>
+                </td>
+              <?php
+            } else if ($i < $iofer || $j < $ideman ) {
+              ?>
+                <td class="celda-cost td-somb">
+                  <div class="td-cost"><?= $costo[$i][$j] ?></div>
+
+                  <div class="td-asig"><?= $asig[$i][$j] ?></div>
+                </td>
+              <?php
+            } else {
+              ?>
+                <td class="celda-cost">
+                  <div class="td-cost"><?= $costo[$i][$j] ?></div>
+
+                  <div class="td-asig"><?= $asig[$i][$j] ?></div>
+                </td>
+              <?php
+            }
+          } ?>
+          <td class="td-ofer"><?= $oferta[$i] ?></td>
+        </tr>
+      <?php } ?>
+      <tr>
+        <th>Demanda</th>
+        <?php for ($i = 0; $i < count($demanda); $i++) { ?>
+          <td class="td-deman"><?= $demanda[$i] ?></td>
+        <?php } ?>
+        <td></td>
+      </tr>
+
+    </table>
+  </div>
+<?php
+}
 
 ?>
