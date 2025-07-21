@@ -60,7 +60,7 @@ function tableEsquinaNoroeste($demanda, $oferta, $costo, $asig, $ideman, $iofer)
                     <div class="td-asig"><?= $asig[$i][$j] ?></div>
                   </td>
                 <?php
-              } else if ($i < $iofer || $j < $ideman ) {
+              } else if ($demanda[$j] == 0 || $oferta[$i] == 0) { //$i < $iofer || $j < $ideman 
                 ?>
                   <td class="celda-cost td-somb">
                     <div class="td-cost"><?= $costo[$i][$j] ?></div>
