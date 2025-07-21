@@ -54,3 +54,14 @@
     background-color: rgba(142, 170, 241, 0.866);
     font-weight: bold;
 }
+.td-addi {
+    background-color: rgba(242, 134, 231, 0.727);
+}
+.td-ext {
+    background-color: rgba(142, 170, 241, 0.866);
+}
+
+.tabla-resul {
+    display: flex;
+    justify-content: center;
+}

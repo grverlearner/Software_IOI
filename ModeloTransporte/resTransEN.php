@@ -37,7 +37,7 @@ require_once '../Inicio/sidebar.php';
 
 <div class="cont-trans-all">
     <div class="titulo">
-        <h1>Moleo de transporte - Esquina Noroeste</h1>
+        <h1>Modelo de transporte - Esquina Noroeste</h1>
     </div>
 
     <div class="cont-res-en">
@@ -65,10 +65,16 @@ require_once '../Inicio/sidebar.php';
         }
         ?>
     </div>
+    <div class="res-en-end">
+
+    </div>
 </div>
 
 <div class="res-trans">
-    
+    <div class="subtitulo">
+       <h3>Resultado</h3> 
+    </div>
+    <?= respTransporte($cost,$asig); ?>
 </div>
 
 
