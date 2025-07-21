@@ -45,7 +45,8 @@ require_once '../Inicio/sidebar.php';
         <?php
         viewTable($deman, $ofer, $cost, $asig);
         $cen = 0;
-        while (($ideman < count($deman) && $iofer < count($ofer)) && $cen < 20) {
+        $numVerifi = $numDestinos+$numFuentes-1;
+        while (($numVerifi > conteoAsignacion($asig)) && $cen < 20) { //$ideman < count($deman) && $iofer < count($ofer)
             if ($deman[$ideman] > $ofer[$iofer]) {
                 $asig[$iofer][$ideman] = $ofer[$iofer];
                 $deman[$ideman] -=  $asig[$iofer][$ideman];
@@ -57,7 +58,7 @@ require_once '../Inicio/sidebar.php';
                 $ofer[$iofer] -=  $asig[$iofer][$ideman];
                 $ideman++;
             }
-            tableEsquinaNoroeste($deman, $ofer, $cost, $asig, $ideman, $iofer);
+            viewTableFormat($deman, $ofer, $cost, $asig);
             $cen++;
             // echo $ideman . " ... " . $iofer . "<br>";
             // echo count($deman) . "---" . count($ofer);

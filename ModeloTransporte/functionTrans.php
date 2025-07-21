@@ -37,7 +37,7 @@ function viewTable($demanda, $oferta, $costo, $asig) {
   <?php
 }
 
-function tableEsquinaNoroeste($demanda, $oferta, $costo, $asig, $ideman, $iofer) {
+function viewTableFormat($demanda, $oferta, $costo, $asig) {
   ?>
     <div class="cont-table">
       <table class="r-table">
@@ -116,9 +116,9 @@ function respTransporte($costo, $asig) {
             $sumTotal += $costo[$i][$j]*$asig[$i][$j];
             ?>
               <tr>
-                <td class="td-ofer"><?=$i?></td>
+                <td class="td-ofer"><?=$i+1?></td>
                 <td class=""> → </td>
-                <td class="td-deman"><?=$j?></td>
+                <td class="td-deman"><?=$j+1?></td>
                 <td class="td-somb"><?=$costo[$i][$j]?></td>
                 <td> x </td>
                 <td class="td-addi"><?=$asig[$i][$j]?></td>
@@ -138,6 +138,18 @@ function respTransporte($costo, $asig) {
     </table>
   </div>
   <?php
+}
+
+function conteoAsignacion ($asig){
+  $conteo = 0;
+  for ($i = 0; $i < count($asig); $i++) {
+    for ($j = 0; $j < count($asig[0]); $j++) {
+      if($asig[$i][$j] > 0){
+        $conteo++;
+      }
+    }
+  }
+  return $conteo;
 }
 
 ?>
