@@ -59,9 +59,10 @@ require_once '../Inicio/sidebar.php';
     <?php
     viewTable($deman, $ofer, $cost, $asig);
     $cen = 0;
-    
+    $ideman = 0;
+    $iofer = 0;
     $numVerifi = $numDestinos+$numFuentes-1;
-    while (($numVerifi > conteoAsignacion($asig)) && $cen < 20) {
+    while ((($numVerifi > conteoAsignacion($asig)) && $cen < 20) && (array_sum($ofer) > 0 && array_sum($deman))) {
       $ideman = 0;
       $iofer = 0;
       $costMenor = 10000000;

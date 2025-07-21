@@ -61,7 +61,7 @@ require_once '../Inicio/sidebar.php';
         viewTable($deman, $ofer, $cost, $asig);
         $cen = 0;
         $numVerifi = $numDestinos+$numFuentes-1;
-        while (($numVerifi > conteoAsignacion($asig)) && $cen < 20) { //$ideman < count($deman) && $iofer < count($ofer)
+        while ((($numVerifi > conteoAsignacion($asig)) && $cen < 20) && (array_sum($ofer) > 0 && array_sum($deman))) { //$ideman < count($deman) && $iofer < count($ofer)
             
             if ($deman[$ideman] > $ofer[$iofer]) {
                 $asig[$iofer][$ideman] = $ofer[$iofer];
