@@ -19,6 +19,21 @@ $objetivo = $_SESSION['objetivo'] ?? 'min';
 $cost = $costo;
 $deman = $demanda;
 $ofer = $oferta;
+
+$filCost = count($cost);
+$columCost = count($cost[0]);
+if(array_sum($deman) > array_sum($ofer)){
+    $ofer[$filCost] = array_sum($deman) - array_sum($ofer);
+    for($i = 0; $i < $columCost; $i++){
+        $cost[$filCost][$i] = 0;
+    }
+} else if(array_sum($deman) < array_sum($ofer)){
+    $deman[$columCost] = array_sum($ofer) - array_sum($deman);
+    for($i = 0; $i < $filCost; $i++){
+        $cost[$i][$columCost] = 0;
+    }
+}
+
 $asig = [];
 for ($i = 0; $i < count($ofer); $i++) {
   for ($j = 0; $j < count($deman); $j++) {
@@ -50,12 +65,18 @@ require_once '../Inicio/sidebar.php';
       $ideman = 0;
       $iofer = 0;
       $costMenor = 10000000;
+      $cero = true;
       for ($i = 0; $i < count($ofer); $i++) {
         for ($j = 0; $j < count($deman); $j++) {          
           if ($costMenor > $cost[$i][$j] && $asig[$i][$j] == 0 && ($ofer[$i] > 0 && $deman[$j] > 0)) {
-            $costMenor = $cost[$i][$j];
-            $iofer = $i;
-            $ideman = $j;
+            $cero = true;
+            if($numVerifi-1 > conteoAsignacion($asig)) $cero = false;
+            if($cero || $cost[$i][$j] != 0){
+              $costMenor = $cost[$i][$j];
+              $iofer = $i;
+              $ideman = $j;
+            }
+            
           }
         }
       }

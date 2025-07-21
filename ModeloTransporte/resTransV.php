@@ -32,7 +32,7 @@ if(array_sum($deman) > array_sum($ofer)){
         $cost[$filCost][$i] = 0;
     }
 } else if(array_sum($deman) < array_sum($ofer)){
-    $deman[$columCost] = array_sum($deman) - array_sum($ofer);
+    $deman[$columCost] = array_sum($ofer) - array_sum($deman);
     for($i = 0; $i < $filCost; $i++){
         $cost[$i][$columCost] = 0;
     }
@@ -44,6 +44,7 @@ for ($i = 0; $i < count($ofer); $i++) {
         $asig[$i][$j] = 0;
     }
 }
+/*
 $penFila = [];
 for ($i = 0; $i < count($ofer); $i++) {
     list($min1, $min2) = dosMinimosFila($ofer[$i]);
@@ -56,6 +57,7 @@ for ($i = 0; $i < count($deman); $i++) {
     list($min1, $min2) = dosMinimosColumna($deman, $i);
     $penColumna[$i] = $min2-$min1;
 }
+*/
 ?>
 
 <?php
@@ -81,10 +83,16 @@ require_once '../Inicio/sidebar.php';
                 $deman[$ideman] -=  $asig[$iofer][$ideman];
                 $ofer[$iofer] -=  $asig[$iofer][$ideman];
                 $iofer++;
+            } else if($deman[$ideman] < $ofer[$iofer]) {
+                $asig[$iofer][$ideman] = $deman[$ideman];
+                $deman[$ideman] -=  $asig[$iofer][$ideman];
+                $ofer[$iofer] -=  $asig[$iofer][$ideman];
+                $ideman++;
             } else {
                 $asig[$iofer][$ideman] = $deman[$ideman];
                 $deman[$ideman] -=  $asig[$iofer][$ideman];
                 $ofer[$iofer] -=  $asig[$iofer][$ideman];
+                $iofer++;
                 $ideman++;
             }
             viewTableFormat($deman, $ofer, $cost, $asig);

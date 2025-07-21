@@ -14,10 +14,10 @@ $objetivo = $_SESSION['objetivo'] ?? 'min';
 ?>
 <div class="cont-all">
     <div class="titulo">
-    <h1>Modelo de Transporte - Esquina Noroeste</h1>
+    <h1>Modelo de Transporte - Costos Mínimos</h1>
 </div>  
 <!-- resTransEN -->
-<form method="POST" action="resTransEN.php">
+<form method="POST" action="resTransCM.php">
     <div class="cuerpoTransporte">
         <div class="ingresaDatos">
             <div class="tituloDatos">
