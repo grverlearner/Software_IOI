@@ -56,7 +56,6 @@ require_once '../Inicio/sidebar.php';
     </div>
 
     <div class="cont-res-en">
-
         <?php
         viewTable($deman, $ofer, $cost, $asig);
         $cen = 0;
@@ -82,9 +81,6 @@ require_once '../Inicio/sidebar.php';
             }
             viewTableFormat($deman, $ofer, $cost, $asig);
             $cen++;
-            // echo $ideman . " ... " . $iofer . "<br>";
-            // echo count($deman) . "---" . count($ofer);
-
         }
         ?>
     </div>
